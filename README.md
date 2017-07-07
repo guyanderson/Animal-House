@@ -38,11 +38,12 @@ _Application will show a list of all the animals in our zoo. Each animal will ha
 ## To-Do List
 
 * _Remove add new animal form from the main view. Bring back with button click. -complete._
-* _When editing an animal, hide the running list of animals._
+* _When editing an animal, hide the running list of animals. -complete._
+* _Add some color._
 
 ## Known Bugs
 
-* __
+* _If no data entered while adding a new animal, a new object will still be created and dicplayed with no or missing information._
 
 ## Technologies Used
 
