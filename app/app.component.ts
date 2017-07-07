@@ -12,14 +12,17 @@ import { Animal } from './animal.model';
             <button (click)="showAddNew()">Add an animal to the Zoo</button>
             <br>
             <br>
-            <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
-            <edit-animal [childSelectedAnimal]="selectedAnimal" (editDoneSender)="finishedEditing()"></edit-animal>
-
+            <animal-list [childAnimalList]="masterAnimalList" (clickSender)="showEdit()" (clickSender)="editAnimal($event)"></animal-list>
         </div>
 
         <div id="addNew" *ngIf="addNew">
             <new-animal (newAnimalSender)="showMain()" (newAnimalSender)="addAnimal($event)"></new-animal>
         </div>
+
+        <div id="editView" *ngIf="editView">
+            <edit-animal [childSelectedAnimal]="selectedAnimal" (editDoneSender)="finishedEditing()" (editDoneSender)="showMain()"></edit-animal>
+        </div>
+
     </div>
     `
 })
@@ -28,6 +31,7 @@ export class AppComponent {
     selectedAnimal = null;
     main: boolean = true
     addNew: boolean = false;
+    editView: boolean = false;
 
 
     masterAnimalList: Animal[] = [
@@ -39,11 +43,19 @@ export class AppComponent {
     showMain() {
         this.main = true;
         this.addNew = false;
+        this.editView = false;
     }
 
     showAddNew() {
         this.main = false;
         this.addNew = true;
+        this.editView = false;
+    }
+
+    showEdit() {
+        this.main = false;
+        this.addNew = false;
+        this.editView = true;
     }
 
     editAnimal(clickedAnimal) {
