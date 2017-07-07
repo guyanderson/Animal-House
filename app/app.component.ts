@@ -8,7 +8,7 @@ import { Animal } from './animal.model';
         <h1>Animal House Zoo</h1>
         <br>
         <br>
-        <animal-list [childAnimalList]="masterAnimalList"></animal-list>
+        <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
         <new-animal (newAnimalSender)="addAnimal($event)"></new-animal>
         <edit-animal [childSelectedAnimal]="selectedAnimal" (editDoneSender)="finishedEditing()"></edit-animal>
     </div>
@@ -23,6 +23,10 @@ export class AppComponent {
         new Animal('Ocelot','Prince', 4, 'Carnivore', 'Tropical Rain Forest Building', 6, 'Male', 'Laying in the sunshine', 'Toys that are not rope-based'),
         new Animal('Northwest Black Tailed Deer', 'Tinkerbell', 8, 'Herbivore', 'Northern Trail', 2, 'Female', 'Delicate roots and leaves', 'Loud Noises')
     ];
+
+    editAnimal(clickedAnimal) {
+        this.selectedAnimal = clickedAnimal;
+    }
 
     addAnimal(newAnimal: Animal) {
         this.masterAnimalList.push(newAnimal);
