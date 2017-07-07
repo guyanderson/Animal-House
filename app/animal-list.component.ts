@@ -8,7 +8,7 @@ import { Animal } from './animal.model';
   template: `
   <ul>
 
-    <li *ngFor="let currentAnimal of childAnimalList"><strong>Species:</strong> {{currentAnimal.species}}<br><strong>Name:</strong> {{currentAnimal.name}}<br><strong>Age:</strong> {{currentAnimal.age}}<br><strong>Diet:</strong>{{currentAnimal.diet}}<br><strong>Location:</strong> {{currentAnimal.location}}<br><strong>Number of Caretakers:</strong> {{currentAnimal.caretaker}}<br><strong>Sex:</strong> {{currentAnimal.sex}}<br><strong>Likes:</strong> {{currentAnimal.like}}<br><strong>dislike:</strong> {{currentAnimal.dislike}}<br><br><br></li>
+    <li *ngFor="let currentAnimal of childAnimalList"><strong>Species:</strong> {{currentAnimal.species}}<br><strong>Name:</strong> {{currentAnimal.name}}<br><strong>Age:</strong> {{currentAnimal.age}}<br><strong>Diet:</strong> {{currentAnimal.diet}}<br><strong>Location:</strong> {{currentAnimal.location}}<br><strong>Number of Caretakers:</strong> {{currentAnimal.caretaker}}<br><strong>Sex:</strong> {{currentAnimal.sex}}<br><strong>Likes:</strong> {{currentAnimal.like}}<br><strong>dislike:</strong> {{currentAnimal.dislike}}<br><br><br></li>
 
   </ul>
   `
