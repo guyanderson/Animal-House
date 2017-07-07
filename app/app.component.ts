@@ -8,21 +8,43 @@ import { Animal } from './animal.model';
         <h1>Animal House Zoo</h1>
         <br>
         <br>
-        <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
-        <new-animal (newAnimalSender)="addAnimal($event)"></new-animal>
-        <edit-animal [childSelectedAnimal]="selectedAnimal" (editDoneSender)="finishedEditing()"></edit-animal>
+        <div id="main" *ngIf="main">
+            <button (click)="showAddNew()">Add an animal to the Zoo</button>
+            <br>
+            <br>
+            <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
+            <edit-animal [childSelectedAnimal]="selectedAnimal" (editDoneSender)="finishedEditing()"></edit-animal>
+
+        </div>
+
+        <div id="addNew" *ngIf="addNew">
+            <new-animal (newAnimalSender)="showMain()" (newAnimalSender)="addAnimal($event)"></new-animal>
+        </div>
     </div>
     `
 })
 
 export class AppComponent {
     selectedAnimal = null;
+    main: boolean = true
+    addNew: boolean = false;
+
 
     masterAnimalList: Animal[] = [
         new Animal('Arctic Fox','Moon', 2, 'Carnivore', 'Northern Trail', 5, 'Female', 'Cool shade', 'Loud noises'),
         new Animal('Ocelot','Prince', 4, 'Carnivore', 'Tropical Rain Forest Building', 6, 'Male', 'Laying in the sunshine', 'Toys that are not rope-based'),
         new Animal('Northwest Black Tailed Deer', 'Tinkerbell', 8, 'Herbivore', 'Northern Trail', 2, 'Female', 'Delicate roots and leaves', 'Loud Noises')
     ];
+
+    showMain() {
+        this.main = true;
+        this.addNew = false;
+    }
+
+    showAddNew() {
+        this.main = false;
+        this.addNew = true;
+    }
 
     editAnimal(clickedAnimal) {
         this.selectedAnimal = clickedAnimal;
